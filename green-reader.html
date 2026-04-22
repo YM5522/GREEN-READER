@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>GREEN READER</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-bright: #74c69d;
+    --gold: #d4af37;
+    --gold-dim: #a08020;
+    --bg: #0a0f0d;
+    --bg2: #111a15;
+    --bg3: #182219;
+    --text: #e8f5e0;
+    --text-dim: #6b8f6b;
+    --red: #e05c5c;
+    --blue: #5c9be0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* HEADER */
+  header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid #1e2e22;
+    background: var(--bg2);
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--green-bright);
+    line-height: 1;
+  }
+  .logo span { color: var(--gold); }
+
+  .calibrate-btn {
+    background: none;
+    border: 1px solid var(--green);
+    color: var(--green-bright);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .2s;
+  }
+  .calibrate-btn:active { background: var(--green); color: var(--bg); }
+
+  /* MAIN AREA */
+  main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  /* LEVEL CIRCLE */
+  .level-container {
+    position: relative;
+    width: min(72vw, 320px);
+    aspect-ratio: 1;
+  }
+
+  .level-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    background: radial-gradient(ellipse at center, #0d1a10 0%, #081008 100%);
+    box-shadow:
+      0 0 0 1px #0a160d,
+      0 0 30px rgba(45,106,79,0.3),
+      inset 0 0 40px rgba(0,0,0,0.5);
+  }
+
+  /* Grid lines */
+  .level-ring::before, .level-ring::after {
+    content: '';
+    position: absolute;
+    background: rgba(82,183,136,0.12);
+  }
+  .level-ring::before {
+    width: 1px; height: 100%;
+    left: 50%; transform: translateX(-50%);
+  }
+  .level-ring::after {
+    height: 1px; width: 100%;
+    top: 50%; transform: translateY(-50%);
+  }
+
+  /* Inner rings */
+  .inner-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(82,183,136,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Cardinal ticks */
+  .tick {
+    position: absolute;
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-dim);
+    letter-spacing: 0;
+  }
+
+  /* Bubble */
+  .bubble {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+      rgba(116,198,157,0.9) 0%,
+      rgba(82,183,136,0.7) 40%,
+      rgba(45,106,79,0.5) 100%);
+    border: 2px solid var(--green-bright);
+    box-shadow: 0 0 20px rgba(116,198,157,0.6), 0 0 6px rgba(116,198,157,0.4);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    transition: left .12s ease-out, top .12s ease-out;
+    will-change: left, top;
+  }
+
+  .bubble.flat {
+    box-shadow: 0 0 30px rgba(212,175,55,0.8), 0 0 10px rgba(212,175,55,0.6);
+    border-color: var(--gold);
+    background: radial-gradient(circle at 35% 35%,
+      rgba(255,220,80,0.9) 0%,
+      rgba(212,175,55,0.7) 40%,
+      rgba(160,128,32,0.5) 100%);
+  }
+
+  /* Center crosshair */
+  .crosshair {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 14px;
+    pointer-events: none;
+  }
+  .crosshair::before, .crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(212,175,55,0.5);
+  }
+  .crosshair::before { width: 1px; height: 100%; left: 50%; transform: translateX(-50%); }
+  .crosshair::after  { height: 1px; width: 100%; top: 50%; transform: translateY(-50%); }
+
+  /* ARROW OVERLAY */
+  .arrow-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* READINGS PANEL */
+  .readings {
+    width: 100%;
+    max-width: 340px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .reading-card {
+    background: var(--bg2);
+    border: 1px solid #1e2e22;
+    border-radius: 4px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .reading-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .reading-value {
+    font-size: 22px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  .reading-unit {
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .reading-card.break-card { grid-column: 1 / -1; }
+  .break-card .reading-value { font-size: 28px; }
+
+  /* Break direction indicator */
+  .break-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .break-arrow {
+    font-size: 20px;
+    transition: transform .3s;
+  }
+
+  .break-text {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+  }
+
+  /* Slope intensity bar */
+  .slope-bar-wrap {
+    width: 100%;
+    max-width: 340px;
+    background: var(--bg2);
+    border: 1px solid #1e2e22;
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+
+  .slope-bar-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .slope-bar-track {
+    width: 100%;
+    height: 6px;
+    background: #0a160d;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slope-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--green-bright), var(--gold));
+    transition: width .15s ease-out, background .3s;
+  }
+
+  .slope-bar-fill.steep {
+    background: linear-gradient(90deg, var(--gold), var(--red));
+  }
+
+  /* Permission screen */
+  .permission-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px;
+    z-index: 100;
+  }
+
+  .permission-screen h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: var(--green-bright);
+    text-align: center;
+  }
+
+  .permission-screen p {
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+    letter-spacing: .5px;
+  }
+
+  .permission-btn {
+    background: var(--green);
+    color: var(--bg);
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    padding: 14px 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .permission-btn:active { background: var(--green-bright); }
+
+  .icon-level {
+    font-size: 64px;
+    filter: drop-shadow(0 0 20px rgba(82,183,136,0.5));
+  }
+
+  /* Flat indicator */
+  .flat-badge {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+    margin-top: 34px;
+  }
+  .flat-badge.visible { opacity: 1; }
+
+  /* status dot */
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .status-dot.active { background: var(--green-bright); box-shadow: 0 0 6px var(--green-bright); }
+</style>
+</head>
+<body>
+
+<!-- Permission screen for iOS -->
+<div class="permission-screen" id="permScreen">
+  <div class="icon-level">⛳</div>
+  <h2>GREEN READER</h2>
+  <p>グリーンの傾斜を読むために<br>デバイスのモーションセンサーへの<br>アクセスが必要です</p>
+  <button class="permission-btn" id="permBtn">センサーを有効化</button>
+  <p style="font-size:11px;color:#3a5a3a">スマートフォンをグリーンに置いて<br>傾斜方向とブレイクラインを確認</p>
+</div>
+
+<header>
+  <div class="logo">GREEN<span>.</span>READER</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span id="sensorStatus" style="font-size:10px;color:var(--text-dim)"><span class="status-dot" id="statusDot"></span>SENSOR</span>
+    <button class="calibrate-btn" id="calibBtn">CALIBRATE</button>
+  </div>
+</header>
+
+<main>
+  <!-- Level Circle -->
+  <div class="level-container" id="levelContainer">
+    <div class="level-ring" id="levelRing">
+      <!-- Inner rings -->
+      <div class="inner-ring" style="width:30%;height:30%"></div>
+      <div class="inner-ring" style="width:60%;height:60%"></div>
+      <div class="inner-ring" style="width:80%;height:80%"></div>
+
+      <!-- Ticks N/S/E/W -->
+      <div class="tick" style="top:4px;left:50%;transform:translateX(-50%)">↑ 前</div>
+      <div class="tick" style="bottom:4px;left:50%;transform:translateX(-50%)">後 ↓</div>
+      <div class="tick" style="left:6px;top:50%;transform:translateY(-50%)">左</div>
+      <div class="tick" style="right:6px;top:50%;transform:translateY(-50%)">右</div>
+
+      <!-- Arrow canvas -->
+      <canvas class="arrow-canvas" id="arrowCanvas"></canvas>
+
+      <!-- Center crosshair -->
+      <div class="crosshair"></div>
+
+      <!-- Bubble -->
+      <div class="bubble" id="bubble"></div>
+
+      <!-- Flat badge -->
+      <div class="flat-badge" id="flatBadge">FLAT</div>
+    </div>
+  </div>
+
+  <!-- Slope intensity bar -->
+  <div class="slope-bar-wrap">
+    <div class="slope-bar-label">傾斜強度 / SLOPE INTENSITY</div>
+    <div class="slope-bar-track">
+      <div class="slope-bar-fill" id="slopeBar"></div>
+    </div>
+  </div>
+
+  <!-- Readings -->
+  <div class="readings">
+    <div class="reading-card">
+      <div class="reading-label">LEFT/RIGHT</div>
+      <div class="reading-value" id="lrVal" style="color:var(--green-bright)">0.0</div>
+      <div class="reading-unit">°</div>
+    </div>
+    <div class="reading-card">
+      <div class="reading-label">FRONT/BACK</div>
+      <div class="reading-value" id="fbVal" style="color:var(--green-bright)">0.0</div>
+      <div class="reading-unit">°</div>
+    </div>
+    <div class="reading-card">
+      <div class="reading-label">TOTAL</div>
+      <div class="reading-value" id="totalVal" style="color:var(--gold)">0.0</div>
+      <div class="reading-unit">°</div>
+    </div>
+    <div class="reading-card break-card">
+      <div class="reading-label">BREAK DIRECTION / ブレイク方向</div>
+      <div class="break-indicator">
+        <div class="reading-value" id="breakVal" style="color:var(--gold)">—</div>
+        <div id="breakArrow" class="break-arrow">•</div>
+        <div class="break-text" id="breakDesc">水平</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const bubble = document.getElementById('bubble');
+  const lrVal = document.getElementById('lrVal');
+  const fbVal = document.getElementById('fbVal');
+  const totalVal = document.getElementById('totalVal');
+  const breakVal = document.getElementById('breakVal');
+  const breakArrow = document.getElementById('breakArrow');
+  const breakDesc = document.getElementById('breakDesc');
+  const slopeBar = document.getElementById('slopeBar');
+  const flatBadge = document.getElementById('flatBadge');
+  const statusDot = document.getElementById('statusDot');
+  const permScreen = document.getElementById('permScreen');
+  const permBtn = document.getElementById('permBtn');
+  const calibBtn = document.getElementById('calibBtn');
+  const arrowCanvas = document.getElementById('arrowCanvas');
+  const levelContainer = document.getElementById('levelContainer');
+
+  let calibBeta = 0, calibGamma = 0;
+  let rawBeta = 0, rawGamma = 0;
+  let active = false;
+
+  // Canvas setup
+  function resizeCanvas() {
+    const size = levelContainer.offsetWidth;
+    arrowCanvas.width = size;
+    arrowCanvas.height = size;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // Draw break arrow on canvas
+  function drawArrow(gamma, beta) {
+    const ctx = arrowCanvas.getContext('2d');
+    const w = arrowCanvas.width, h = arrowCanvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    const total = Math.sqrt(gamma * gamma + beta * beta);
+    if (total < 0.4) return;
+
+    const cx = w / 2, cy = h / 2;
+    const r = w * 0.38;
+
+    // The ball breaks AWAY from the high side, i.e. in the direction the device tilts
+    // gamma = left(-)/right(+), beta = forward(+)/backward(-)
+    const angle = Math.atan2(gamma, beta); // direction of tilt = downhill direction
+    const opacity = Math.min(total / 8, 1);
+
+    // Arrow from center toward downhill edge
+    const ex = cx + Math.sin(angle) * r;
+    const ey = cy + Math.cos(angle) * r;
+
+    ctx.save();
+    ctx.globalAlpha = opacity * 0.85;
+
+    // Line
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(ex, ey);
+    ctx.strokeStyle = '#d4af37';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.stroke();
+
+    // Arrowhead
+    const alen = 12, awidth = 6;
+    const ax = ex - Math.sin(angle) * alen;
+    const ay = ey - Math.cos(angle) * alen;
+    const px = Math.cos(angle) * awidth;
+    const py = -Math.sin(angle) * awidth;
+
+    ctx.beginPath();
+    ctx.moveTo(ex, ey);
+    ctx.lineTo(ax + px, ay + py);
+    ctx.lineTo(ax - px, ay - py);
+    ctx.closePath();
+    ctx.fillStyle = '#d4af37';
+    ctx.setLineDash([]);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  function onOrientation(e) {
+    rawBeta = e.beta || 0;
+    rawGamma = e.gamma || 0;
+    if (!active) {
+      active = true;
+      statusDot.classList.add('active');
+    }
+    update();
+  }
+
+  function update() {
+    const levelW = levelContainer.offsetWidth;
+    const radius = levelW / 2;
+    const bubbleR = 26; // half of bubble size
+
+    // Apply calibration offset
+    let beta  = rawBeta  - calibBeta;
+    let gamma = rawGamma - calibGamma;
+
+    // Clamp to ±20° range for display
+    const maxAngle = 20;
+    const bClamped = Math.max(-maxAngle, Math.min(maxAngle, beta));
+    const gClamped = Math.max(-maxAngle, Math.min(maxAngle, gamma));
+
+    // Bubble position: bubble moves OPPOSITE to tilt (it floats uphill)
+    const maxOffset = radius - bubbleR - 4;
+    const bx = (gClamped / maxAngle) * maxOffset;
+    const by = (bClamped / maxAngle) * maxOffset;
+
+    // Clamp to circle
+    const dist = Math.sqrt(bx * bx + by * by);
+    let fx = bx, fy = by;
+    if (dist > maxOffset) {
+      fx = bx / dist * maxOffset;
+      fy = by / dist * maxOffset;
+    }
+
+    bubble.style.left = `calc(50% + ${fx}px)`;
+    bubble.style.top  = `calc(50% + ${fy}px)`;
+
+    // Values
+    const absGamma = Math.abs(gamma);
+    const absBeta  = Math.abs(beta);
+    const total = Math.sqrt(gamma * gamma + beta * beta);
+    const isFlat = total < 0.5;
+
+    lrVal.textContent = absGamma.toFixed(1);
+    lrVal.style.color = gamma > 0.5 ? 'var(--blue)' : gamma < -0.5 ? 'var(--red)' : 'var(--green-bright)';
+
+    fbVal.textContent = absBeta.toFixed(1);
+    fbVal.style.color = beta > 0.5 ? 'var(--blue)' : beta < -0.5 ? 'var(--red)' : 'var(--green-bright)';
+
+    totalVal.textContent = total.toFixed(1);
+
+    // Slope bar (max ~15° = 100%)
+    const pct = Math.min(total / 15 * 100, 100);
+    slopeBar.style.width = pct + '%';
+    slopeBar.classList.toggle('steep', total > 8);
+
+    // Bubble gold when flat
+    bubble.classList.toggle('flat', isFlat);
+    flatBadge.classList.toggle('visible', isFlat);
+
+    // Break direction
+    if (isFlat) {
+      breakVal.textContent = '—';
+      breakArrow.textContent = '•';
+      breakDesc.textContent = '水平 / FLAT';
+    } else {
+      // Determine primary break direction
+      // The ball breaks toward the low side
+      // gamma > 0 = device tilts right = right side is down = ball breaks RIGHT
+      // beta > 0 = device tilts forward = front is down = ball breaks FORWARD (away)
+
+      let dir = '';
+      let arrow = '';
+      let desc = '';
+
+      const isLR = absGamma > absBeta;
+      const isFB = absBeta > absGamma;
+      const isDiag = Math.abs(absGamma - absBeta) < 1;
+
+      if (isDiag) {
+        if (gamma > 0 && beta > 0)       { dir = '右前'; arrow = '↗'; desc = 'RIGHT-FRONT'; }
+        else if (gamma > 0 && beta < 0)  { dir = '右後'; arrow = '↘'; desc = 'RIGHT-BACK'; }
+        else if (gamma < 0 && beta > 0)  { dir = '左前'; arrow = '↖'; desc = 'LEFT-FRONT'; }
+        else                              { dir = '左後'; arrow = '↙'; desc = 'LEFT-BACK'; }
+      } else if (isLR) {
+        if (gamma > 0) { dir = '右'; arrow = '→'; desc = 'RIGHT BREAK'; }
+        else           { dir = '左'; arrow = '←'; desc = 'LEFT BREAK'; }
+      } else {
+        if (beta > 0)  { dir = '前(下り)'; arrow = '↑'; desc = 'DOWNHILL'; }
+        else           { dir = '後(上り)'; arrow = '↓'; desc = 'UPHILL'; }
+      }
+
+      breakVal.textContent = dir;
+      breakArrow.textContent = arrow;
+      breakDesc.textContent = desc;
+    }
+
+    // Draw canvas arrow
+    drawArrow(gClamped, bClamped);
+  }
+
+  // Calibrate
+  calibBtn.addEventListener('click', () => {
+    calibBeta  = rawBeta;
+    calibGamma = rawGamma;
+    calibBtn.textContent = 'DONE ✓';
+    setTimeout(() => { calibBtn.textContent = 'CALIBRATE'; }, 1200);
+  });
+
+  // Init sensor
+  function startSensor() {
+    if (typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission === 'function') {
+      // iOS 13+
+      DeviceOrientationEvent.requestPermission().then(state => {
+        if (state === 'granted') {
+          window.addEventListener('deviceorientation', onOrientation);
+          permScreen.style.display = 'none';
+        }
+      }).catch(console.error);
+    } else {
+      // Android / desktop
+      window.addEventListener('deviceorientation', onOrientation);
+      permScreen.style.display = 'none';
+    }
+  }
+
+  permBtn.addEventListener('click', startSensor);
+
+  // Auto-start on non-iOS
+  if (typeof DeviceOrientationEvent === 'undefined' ||
+      typeof DeviceOrientationEvent.requestPermission !== 'function') {
+    startSensor();
+  }
+
+  // Demo mode when no sensor (desktop preview)
+  let demoAngle = 0;
+  function demoMode() {
+    if (active) return;
+    demoAngle += 0.02;
+    rawBeta  = Math.sin(demoAngle) * 4;
+    rawGamma = Math.cos(demoAngle * 0.7) * 6;
+    update();
+    requestAnimationFrame(demoMode);
+  }
+  setTimeout(() => { if (!active) demoMode(); }, 2000);
+</script>
+</body>
+</html>
