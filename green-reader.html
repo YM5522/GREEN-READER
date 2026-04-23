@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>GREEN READER</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+
+<meta name="theme-color" content="#0a0f0d">
+<meta name="apple-mobile-web-app-title" content="Green Reader">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-bright: #74c69d;
+    --gold: #d4af37;
+    --gold-dim: #a08020;
+    --bg: #0a0f0d;
+    --bg2: #111a15;
+    --bg3: #182219;
+    --text: #e8f5e0;
+    --text-dim: #6b8f6b;
+    --red: #e05c5c;
+    --blue: #5c9be0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* HEADER */
+  header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid #1e2e22;
+    background: var(--bg2);
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--green-bright);
+    line-height: 1;
+  }
+  .logo span { color: var(--gold); }
+
+  .calibrate-btn {
+    background: none;
+    border: 1px solid var(--green);
+    color: var(--green-bright);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .2s;
+  }
+  .calibrate-btn:active { background: var(--green); color: var(--bg); }
+
+  /* MAIN AREA */
+  main {
+    flex: 1;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 16px 32px;
+  }
+
+  /* LEVEL CIRCLE */
+  .level-container {
+    position: relative;
+    width: min(72vw, 320px);
+    aspect-ratio: 1;
+  }
+
+  .level-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    background: radial-gradient(ellipse at center, #0d1a10 0%, #081008 100%);
+    box-shadow:
+      0 0 0 1px #0a160d,
+      0 0 30px rgba(45,106,79,0.3),
+      inset 0 0 40px rgba(0,0,0,0.5);
+  }
+
+  /* Grid lines */
+  .level-ring::before, .level-ring::after {
+    content: '';
+    position: absolute;
+    background: rgba(82,183,136,0.12);
+  }
+  .level-ring::before {
+    width: 1px; height: 100%;
+    left: 50%; transform: translateX(-50%);
+  }
+  .level-ring::after {
+    height: 1px; width: 100%;
+    top: 50%; transform: translateY(-50%);
+  }
+
+  /* Inner rings */
+  .inner-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(82,183,136,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Cardinal ticks */
+  .tick {
+    position: absolute;
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-dim);
+    letter-spacing: 0;
+  }
+
+  /* Bubble */
+  .bubble {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+      rgba(116,198,157,0.9) 0%,
+      rgba(82,183,136,0.7) 40%,
+      rgba(45,106,79,0.5) 100%);
+    border: 2px solid var(--green-bright);
+    box-shadow: 0 0 20px rgba(116,198,157,0.6), 0 0 6px rgba(116,198,157,0.4);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    transition: left .12s ease-out, top .12s ease-out;
+    will-change: left, top;
+  }
+
+  .bubble.flat {
+    box-shadow: 0 0 30px rgba(212,175,55,0.8), 0 0 10px rgba(212,175,55,0.6);
+    border-color: var(--gold);
+    background: radial-gradient(circle at 35% 35%,
+      rgba(255,220,80,0.9) 0%,
+      rgba(212,175,55,0.7) 40%,
+      rgba(160,128,32,0.5) 100%);
+  }
+
+  /* Center crosshair */
+  .crosshair {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 14px;
+    pointer-events: none;
+  }
+  .crosshair::before, .crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(212,175,55,0.5);
+  }
+  .crosshair::before { width: 1px; height: 100%; left: 50%; transform: translateX(-50%); }
+  .crosshair::after  { height: 1px; width: 100%; top: 50%; transform: translateY(-50%); }
+
+  /* READINGS PANEL */
+  .readings {
+    width: 100%;
+    max-width: 340px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .reading-card {
+    background: var(--bg2);
+    border: 1px solid #1e2e22;
+    border-radius: 4px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .reading-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .reading-value {
+    font-size: 22px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  .reading-unit {
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .reading-card.break-card { grid-column: 1 / -1; }
+  .break-card .reading-value { font-size: 24px; }
+
+  .break-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 6px;
+  }
+
+  .break-svg {
+    width: 44px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+
+  .break-names {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .break-text {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+  }
+
+  /* Slope intensity bar */
+  .slope-bar-wrap {
+    width: 100%;
+    max-width: 340px;
+    background: var(--bg2);
+    border: 1px solid #1e2e22;
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+
+  .slope-bar-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .slope-bar-track {
+    width: 100%;
+    height: 6px;
+    background: #0a160d;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slope-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--green-bright), var(--gold));
+    transition: width .15s ease-out, background .3s;
+  }
+
+  .slope-bar-fill.steep {
+    background: linear-gradient(90deg, var(--gold), var(--red));
+  }
+
+  /* Permission screen */
+  .permission-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px;
+    z-index: 100;
+  }
+
+  .permission-screen h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: var(--green-bright);
+    text-align: center;
+  }
+
+  .permission-screen p {
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+    letter-spacing: .5px;
+  }
+
+  .permission-btn {
+    background: var(--green);
+    color: var(--bg);
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    padding: 14px 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .permission-btn:active { background: var(--green-bright); }
+
+  .icon-level {
+    font-size: 64px;
+    filter: drop-shadow(0 0 20px rgba(82,183,136,0.5));
+  }
+
+  /* Flat indicator */
+  .flat-badge {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+    margin-top: 34px;
+  }
+  .flat-badge.visible { opacity: 1; }
+
+  /* CALCULATOR */
+  .calc-panel {
+    width: 100%;
+    max-width: 340px;
+    background: var(--bg2);
+    border: 1px solid #1e2e22;
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+
+  .calc-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--green-bright);
+    margin-bottom: 10px;
+    border-bottom: 1px solid #1e2e22;
+    padding-bottom: 6px;
+  }
+
+  .calc-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .calc-field { flex: 1; }
+
+  .calc-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+  }
+
+  .calc-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #0a160d;
+    border: 1px solid #2a3e2a;
+    border-radius: 2px;
+    padding: 0 8px;
+  }
+
+  .calc-input {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    width: 60px;
+    outline: none;
+    padding: 4px 0;
+  }
+
+  .calc-unit {
+    color: var(--text-dim);
+    font-size: 11px;
+  }
+
+  .speed-btns {
+    display: flex;
+    gap: 4px;
+  }
+
+  .speed-btn {
+    flex: 1;
+    background: #0a160d;
+    border: 1px solid #2a3e2a;
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 2px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 1.2;
+    transition: all .15s;
+  }
+
+  .speed-btn span {
+    display: block;
+    font-size: 9px;
+    color: var(--text-dim);
+  }
+
+  .speed-btn.active {
+    background: var(--green);
+    border-color: var(--green-bright);
+    color: var(--bg);
+  }
+  .speed-btn.active span { color: var(--bg); }
+
+  .pace-toggle {
+    display: flex;
+    gap: 6px;
+    margin: 8px 0 4px;
+  }
+
+  .pace-btn {
+    flex: 1;
+    background: #0a160d;
+    border: 1px solid #2a3e2a;
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .5px;
+    padding: 7px 4px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  .pace-btn.active {
+    background: var(--green);
+    border-color: var(--green-bright);
+    color: var(--bg);
+  }
+
+  .calc-result {
+    background: #0a160d;
+    border: 1px solid #2a3e2a;
+    border-radius: 2px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  .calc-result-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .calc-result-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .calc-result-unit {
+    font-size: 18px;
+    margin-left: 2px;
+  }
+
+  .calc-result-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    letter-spacing: .5px;
+    min-height: 16px;
+  }
+
+  /* status dot */
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .status-dot.active { background: var(--green-bright); box-shadow: 0 0 6px var(--green-bright); }
+
+  /* ── AR OVERLAY ─────────────────────────────────────────────── */
+  .ar-overlay {
+    position: fixed; inset: 0; z-index: 500;
+    background: #000;
+    display: flex; flex-direction: column;
+  }
+  .ar-video-wrap {
+    position: relative; flex: 1; overflow: hidden;
+  }
+  #arVideo {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  #arCanvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .ar-close {
+    position: absolute; top: 18px; right: 18px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.25);
+    color: #fff; font-size: 20px; cursor: pointer; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ar-hint {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.75);
+    font-size: 11px; letter-spacing: 1px; padding: 6px 16px;
+    border-radius: 20px; white-space: nowrap; pointer-events: none;
+    font-family: 'DM Mono', monospace;
+  }
+  .ar-info-bar {
+    background: rgba(6,10,8,0.92); border-top: 1px solid #1e2e22;
+    padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .ar-info-left { display: flex; flex-direction: column; gap: 2px; }
+  .ar-info-label { font-size: 9px; letter-spacing: 1.5px; color: var(--text-dim); }
+  .ar-info-value {
+    font-family: 'Bebas Neue', sans-serif; font-size: 32px;
+    color: var(--gold); letter-spacing: 2px; line-height: 1;
+  }
+  .ar-info-right { text-align: right; }
+  .ar-info-type { font-size: 13px; color: var(--green-bright); letter-spacing: 1px; }
+  .ar-info-sub  { font-size: 10px; color: var(--text-dim); margin-top: 3px; letter-spacing: .5px; }
+
+  /* AR launch button */
+  .ar-btn {
+    width: 100%; max-width: 340px;
+    background: transparent; border: 1px solid #2d6a4f;
+    border-radius: 4px; color: var(--green-bright);
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    letter-spacing: 3px; padding: 12px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: background .15s, border-color .15s;
+  }
+  .ar-btn:active { background: rgba(45,106,79,0.3); }
+  .ar-btn-icon { font-size: 20px; }
+
+</style>
+</head>
+<body>
+
+<!-- Permission screen for iOS -->
+<div class="permission-screen" id="permScreen">
+  <div class="icon-level">⛳</div>
+  <h2>GREEN READER</h2>
+  <p>グリーンの傾斜を読むために<br>デバイスのモーションセンサーへの<br>アクセスが必要です</p>
+  <button class="permission-btn" id="permBtn">センサーを有効化</button>
+  <p style="font-size:11px;color:#3a5a3a">スマートフォンをグリーンに置いて<br>傾斜方向とブレイクラインを確認</p>
+  <p style="font-size:10px;letter-spacing:2px;color:#2d4a32;margin-top:8px">CREATED BY YM</p>
+</div>
+
+<header>
+  <div class="logo">GREEN READER</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span id="sensorStatus" style="font-size:10px;color:var(--text-dim)"><span class="status-dot" id="statusDot"></span>SENSOR</span>
+    <button class="calibrate-btn" id="calibBtn">CALIBRATE</button>
+  </div>
+</header>
+
+<main>
+  <div class="level-container" id="levelContainer">
+    <div class="level-ring" id="levelRing">
+      <div class="inner-ring" style="width:30%;height:30%"></div>
+      <div class="inner-ring" style="width:60%;height:60%"></div>
+      <div class="inner-ring" style="width:80%;height:80%"></div>
+      <div class="tick" style="top:4px;left:50%;transform:translateX(-50%)">↑ 前</div>
+      <div class="tick" style="bottom:4px;left:50%;transform:translateX(-50%)">後 ↓</div>
+      <div class="tick" style="left:6px;top:50%;transform:translateY(-50%)">左</div>
+      <div class="tick" style="right:6px;top:50%;transform:translateY(-50%)">右</div>
+      <div class="crosshair"></div>
+      <div class="bubble" id="bubble"></div>
+      <div class="flat-badge" id="flatBadge">FLAT</div>
+    </div>
+  </div>
+
+  <div class="slope-bar-wrap">
+    <div class="slope-bar-label">傾斜強度 / SLOPE INTENSITY</div>
+    <div class="slope-bar-track">
+      <div class="slope-bar-fill" id="slopeBar"></div>
+    </div>
+  </div>
+
+  <div class="readings">
+    <div class="reading-card">
+      <div class="reading-label">LEFT/RIGHT</div>
+      <div class="reading-value" id="lrVal" style="color:var(--green-bright)">0.0</div>
+      <div class="reading-unit">°</div>
+    </div>
+    <div class="reading-card">
+      <div class="reading-label">FRONT/BACK</div>
+      <div class="reading-value" id="fbVal" style="color:var(--green-bright)">0.0</div>
+      <div class="reading-unit">°</div>
+    </div>
+    <div class="reading-card">
+      <div class="reading-label">TOTAL</div>
+      <div class="reading-value" id="totalVal" style="color:var(--gold)">0.0</div>
+      <div class="reading-unit">°</div>
+    </div>
+    <div class="reading-card break-card">
+      <div class="reading-label">BREAK LINE / ライン</div>
+      <div class="break-indicator">
+        <svg class="break-svg" id="breakSvg" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
+          <g id="breakArrowGroup" transform="rotate(0,30,50)">
+            <line id="breakLine" x1="30" y1="78" x2="30" y2="30"
+                  stroke="#d4af37" stroke-width="3.5" stroke-linecap="round"/>
+            <polygon id="breakHead" points="30,14 21,32 39,32" fill="#d4af37"/>
+          </g>
+        </svg>
+        <div class="break-names">
+          <div class="reading-value" id="breakVal" style="color:var(--gold)">—</div>
+          <div class="break-text" id="breakDesc">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-panel">
+    <div class="calc-title">BREAK CALCULATOR</div>
+    <div class="calc-row">
+      <div class="calc-field">
+        <div class="calc-label">距離 / DISTANCE</div>
+        <div class="calc-input-wrap">
+          <input type="number" id="distInput" class="calc-input" value="5" min="0.5" max="30" step="0.5">
+          <span class="calc-unit">m</span>
+        </div>
+      </div>
+      <div class="calc-field">
+        <div class="calc-label">スティンプ / STIMP</div>
+        <div class="calc-input-wrap">
+          <input type="number" id="stimpInput" class="calc-input" value="10" min="6" max="16" step="0.5">
+          <span class="calc-unit">ft</span>
+        </div>
+      </div>
+    </div>
+    <div class="pace-toggle">
+      <button class="pace-btn active" id="paceJust">ジャストタッチ</button>
+      <button class="pace-btn" id="paceFirm">強め +30cm</button>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-label">推定ブレイク幅 / EST. BREAK</div>
+      <div class="calc-result-value"><span id="breakCm">—</span><span class="calc-result-unit" id="breakUnit"></span></div>
+      <div class="calc-result-sub" id="breakAim"></div>
+    </div>
+  </div>
+
+  <button class="ar-btn" id="arBtn"><span class="ar-btn-icon">📷</span> AR BREAK LINE</button>
+</main>
+
+<script>
+  const bubble = document.getElementById('bubble');
+  const lrVal = document.getElementById('lrVal');
+  const fbVal = document.getElementById('fbVal');
+  const totalVal = document.getElementById('totalVal');
+  const breakVal = document.getElementById('breakVal');
+  const breakDesc = document.getElementById('breakDesc');
+  const slopeBar = document.getElementById('slopeBar');
+  const flatBadge = document.getElementById('flatBadge');
+  const statusDot = document.getElementById('statusDot');
+  const permScreen = document.getElementById('permScreen');
+  const permBtn = document.getElementById('permBtn');
+  const calibBtn = document.getElementById('calibBtn');
+  const levelContainer = document.getElementById('levelContainer');
+  const distInput = document.getElementById('distInput');
+  const stimpInput = document.getElementById('stimpInput');
+  const breakCm = document.getElementById('breakCm');
+  const breakUnit = document.getElementById('breakUnit');
+  const breakAim = document.getElementById('breakAim');
+  const breakArrowGroup = document.getElementById('breakArrowGroup');
+  const breakLine       = document.getElementById('breakLine');
+  const breakHead       = document.getElementById('breakHead');
+
+  // 6 break types: rotate a single upward arrow
+  const BREAKS = {
+    US:  { rotate: 0,   color: '#d4af37', ja: '上りストレート', en: 'UPHILL STRAIGHT'  },
+    DS:  { rotate: 0,   color: '#e07878', ja: '下りストレート', en: 'DOWNHILL STRAIGHT' },
+    UH:  { rotate: -28, color: '#d4af37', ja: '上りフック',     en: 'UPHILL HOOK'      },
+    DH:  { rotate: -28, color: '#e07878', ja: '下りフック',     en: 'DOWNHILL HOOK'    },
+    USl: { rotate: 28,  color: '#d4af37', ja: '上りスライス',   en: 'UPHILL SLICE'     },
+    DSl: { rotate: 28,  color: '#e07878', ja: '下りスライス',   en: 'DOWNHILL SLICE'   },
+  };
+
+  let currentGamma = 0;
+  let currentGammaSigned = 0;
+  let currentBeta  = 0;
+  let calibBeta = 0, calibGamma = 0;
+  let rawBeta = 0, rawGamma = 0;
+  let active = false;
+  let currentTotal = 0;
+  let paceOver = 0; // 0 = just touch, 0.30 = firm
+
+  // Pace toggle
+  document.getElementById('paceJust').addEventListener('click', () => {
+    paceOver = 0;
+    document.getElementById('paceJust').classList.add('active');
+    document.getElementById('paceFirm').classList.remove('active');
+    calcBreak();
+  });
+  document.getElementById('paceFirm').addEventListener('click', () => {
+    paceOver = 0.30;
+    document.getElementById('paceFirm').classList.add('active');
+    document.getElementById('paceJust').classList.remove('active');
+    calcBreak();
+  });
+
+  distInput.addEventListener('input', calcBreak);
+  stimpInput.addEventListener('input', calcBreak);
+
+  function calcBreak() {
+    const dist  = parseFloat(distInput.value)  || 0;
+    const stimp = parseFloat(stimpInput.value) || 10;
+
+    if (currentGamma < 0.3 || dist <= 0) {
+      breakCm.textContent = '—';
+      breakUnit.textContent = '';
+      breakAim.textContent = currentTotal > 0.3 ? '登り/下りのみ（ブレイクなし）' : '傾斜を測定してください';
+      return;
+    }
+
+    // 転がり摩擦係数
+    const mu = 0.84 / stimp;
+    const betaRad = Math.abs(currentBeta) * Math.PI / 180;
+
+    // 上り下り補正
+    let slopeMultiplier;
+    if (currentBeta >= 0) {
+      slopeMultiplier = mu / (mu + Math.sin(betaRad));
+    } else {
+      slopeMultiplier = Math.min(5.0, mu / Math.max(0.01, mu - Math.sin(betaRad)));
+    }
+
+    // ペース補正: ジャストタッチ=1.0, 強め(Xcmオーバー)= ([√(d+X)-√X]²)/d
+    // 物理的に正確な導出：同じ傾斜でもオーバーするほど曲がりが減る
+    let paceMultiplier = 1.0;
+    if (paceOver > 0 && dist > 0) {
+      paceMultiplier = Math.pow(Math.sqrt(dist + paceOver) - Math.sqrt(paceOver), 2) / dist;
+    }
+
+    const cm = dist * Math.tan(currentGamma * Math.PI / 180) * stimp * 18 * slopeMultiplier * paceMultiplier;
+
+    breakCm.textContent = cm.toFixed(1);
+    breakUnit.textContent = 'cm';
+
+    const holeDiam = 10.8;
+    const cups = cm / holeDiam;
+    let aimText;
+    if (cm < 3) {
+      aimText = 'ほぼストレート';
+    } else if (cups < 0.5) {
+      aimText = `カップ縁 ${cm.toFixed(0)}cm 外を狙う`;
+    } else if (cups < 1) {
+      aimText = 'カップ半個分外を狙う';
+    } else {
+      aimText = `カップ約${cups.toFixed(1)}個分外を狙う`;
+    }
+
+    const slopePct = Math.round((slopeMultiplier - 1) * 100);
+    const slopeNote = slopePct > 0 ? `（下り +${slopePct}%）` : slopePct < 0 ? `（上り ${slopePct}%）` : '';
+    breakAim.textContent = aimText + (slopeNote ? ' ' + slopeNote : '');
+  }
+
+  function onOrientation(e) {
+    rawBeta = e.beta || 0;
+    rawGamma = e.gamma || 0;
+    if (!active) {
+      active = true;
+      statusDot.classList.add('active');
+    }
+    update();
+  }
+
+  function update() {
+    const levelW = levelContainer.offsetWidth;
+    const radius = levelW / 2;
+    const bubbleR = 26; // half of bubble size
+
+    // Apply calibration offset
+    let beta  = rawBeta  - calibBeta;
+    let gamma = rawGamma - calibGamma;
+
+    // Clamp to ±20° range for display
+    const maxAngle = 20;
+    const bClamped = Math.max(-maxAngle, Math.min(maxAngle, beta));
+    const gClamped = Math.max(-maxAngle, Math.min(maxAngle, gamma));
+
+    // Bubble position: bubble floats to the HIGH side (negate tilt direction)
+    const maxOffset = radius - bubbleR - 4;
+    const bx = -(gClamped / maxAngle) * maxOffset;
+    const by = -(bClamped / maxAngle) * maxOffset;
+
+    // Clamp to circle
+    const dist = Math.sqrt(bx * bx + by * by);
+    let fx = bx, fy = by;
+    if (dist > maxOffset) {
+      fx = bx / dist * maxOffset;
+      fy = by / dist * maxOffset;
+    }
+
+    bubble.style.left = `calc(50% + ${fx}px)`;
+    bubble.style.top  = `calc(50% + ${fy}px)`;
+
+    // Values
+    const absGamma = Math.abs(gamma);
+    const absBeta  = Math.abs(beta);
+    const total = Math.sqrt(gamma * gamma + beta * beta);
+    const isFlat = total < 0.5;
+
+    lrVal.textContent = absGamma.toFixed(1);
+    lrVal.style.color = gamma > 0.5 ? 'var(--blue)' : gamma < -0.5 ? 'var(--red)' : 'var(--green-bright)';
+
+    fbVal.textContent = absBeta.toFixed(1);
+    fbVal.style.color = beta > 0.5 ? 'var(--blue)' : beta < -0.5 ? 'var(--red)' : 'var(--green-bright)';
+
+    totalVal.textContent = total.toFixed(1);
+
+    // Update for calculator
+    currentTotal = total;
+    currentGamma = absGamma;
+    currentGammaSigned = gamma;
+    currentBeta  = beta;   // signed: >0 uphill, <0 downhill
+    calcBreak();
+
+    // Slope bar (max ~15° = 100%)
+    const pct = Math.min(total / 15 * 100, 100);
+    slopeBar.style.width = pct + '%';
+    slopeBar.classList.toggle('steep', total > 8);
+
+    // Bubble gold when flat
+    bubble.classList.toggle('flat', isFlat);
+    flatBadge.classList.toggle('visible', isFlat);
+
+    // Break line: 6 types — straight only when lateral tilt negligible (< 0.8°)
+    const uphill = beta >= 0;
+    const isStraight = absGamma < 0.8;
+
+    let key;
+    if (isFlat) {
+      breakArrowGroup.setAttribute('transform', 'rotate(90,30,50)');
+      breakLine.setAttribute('stroke', '#2d4a32');
+      breakHead.setAttribute('fill', 'transparent');
+      breakVal.textContent = 'FLAT';
+      breakVal.style.color = 'var(--green-bright)';
+      breakDesc.textContent = '水平';
+    } else {
+      if (isStraight)     key = uphill ? 'US'  : 'DS';
+      else if (gamma < 0) key = uphill ? 'UH'  : 'DH';
+      else                key = uphill ? 'USl' : 'DSl';
+
+      const b = BREAKS[key];
+      breakArrowGroup.setAttribute('transform', `rotate(${b.rotate},30,50)`);
+      breakLine.setAttribute('stroke', b.color);
+      breakHead.setAttribute('fill', b.color);
+      breakVal.textContent = b.ja;
+      breakVal.style.color = b.color;
+      breakDesc.textContent = b.en;
+    }
+  }
+
+  // Calibrate
+  calibBtn.addEventListener('click', () => {
+    calibBeta  = rawBeta;
+    calibGamma = rawGamma;
+    calibBtn.textContent = 'DONE ✓';
+    setTimeout(() => { calibBtn.textContent = 'CALIBRATE'; }, 1200);
+  });
+
+  // Init sensor
+  function startSensor() {
+    if (typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission === 'function') {
+      // iOS 13+
+      DeviceOrientationEvent.requestPermission().then(state => {
+        if (state === 'granted') {
+          window.addEventListener('deviceorientation', onOrientation);
+          permScreen.style.display = 'none';
+        }
+      }).catch(console.error);
+    } else {
+      // Android / desktop
+      window.addEventListener('deviceorientation', onOrientation);
+      permScreen.style.display = 'none';
+    }
+  }
+
+  permBtn.addEventListener('click', startSensor);
+
+  // Auto-start on non-iOS
+  if (typeof DeviceOrientationEvent === 'undefined' ||
+      typeof DeviceOrientationEvent.requestPermission !== 'function') {
+    startSensor();
+  }
+
+  // Demo mode when no sensor (desktop preview)
+  let demoAngle = 0;
+  function demoMode() {
+    if (active) return;
+    demoAngle += 0.02;
+    rawBeta  = Math.sin(demoAngle) * 4;
+    rawGamma = Math.cos(demoAngle * 0.7) * 6;
+    update();
+    requestAnimationFrame(demoMode);
+  }
+  setTimeout(() => { if (!active) demoMode(); }, 2000);
+
+  // ── AR CAMERA ────────────────────────────────────────────────
+  const arOverlay  = document.getElementById('arOverlay');
+  const arVideo    = document.getElementById('arVideo');
+  const arCanvas   = document.getElementById('arCanvas');
+  const arClose    = document.getElementById('arClose');
+  const arBreakCm  = document.getElementById('arBreakCm');
+  const arBreakType= document.getElementById('arBreakType');
+  const arBreakSub = document.getElementById('arBreakSub');
+  let arStream = null, arRaf = null;
+
+  document.getElementById('arBtn').addEventListener('click', openAR);
+  arClose.addEventListener('click', closeAR);
+
+  function openAR() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert('このブラウザはカメラをサポートしていません');
+      return;
+    }
+    arOverlay.style.display = 'flex';
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } } })
+      .then(stream => {
+        arStream = stream;
+        arVideo.srcObject = stream;
+        arVideo.play();
+        arVideo.addEventListener('loadedmetadata', () => {
+          resizeARCanvas();
+          arRaf = requestAnimationFrame(arLoop);
+        }, { once: true });
+      })
+      .catch(() => {
+        alert('カメラへのアクセスが必要です\niPhone: 設定 → Safari → カメラ を許可してください');
+        closeAR();
+      });
+  }
+
+  function closeAR() {
+    if (arStream) { arStream.getTracks().forEach(t => t.stop()); arStream = null; }
+    if (arRaf)    { cancelAnimationFrame(arRaf); arRaf = null; }
+    arOverlay.style.display = 'none';
+  }
+
+  function resizeARCanvas() {
+    arCanvas.width  = arVideo.videoWidth  || window.innerWidth;
+    arCanvas.height = arVideo.videoHeight || window.innerHeight;
+  }
+
+  function arLoop() {
+    drawARLine();
+    arRaf = requestAnimationFrame(arLoop);
+  }
+
+  function drawARLine() {
+    const ctx = arCanvas.getContext('2d');
+    const w = arCanvas.width, h = arCanvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    const breakCmVal = parseFloat(document.getElementById('breakCm').textContent) || 0;
+    const isFlat = currentGamma < 0.3;
+
+    // Update info bar
+    arBreakCm.textContent  = isFlat ? '—' : breakCmVal.toFixed(1);
+    arBreakType.textContent = document.getElementById('breakVal').textContent;
+    arBreakSub.textContent  = document.getElementById('breakAim').textContent;
+
+    // ── Ball (start) and Cup (end) positions
+    const sx = w * 0.5,  sy = h * 0.86;
+    const ex = w * 0.5,  ey = h * 0.10;
+
+    // ── Control point: opposite to break direction
+    // Slice (gamma > 0, ball breaks RIGHT) → aim LEFT → cp to left
+    // Hook  (gamma < 0, ball breaks LEFT)  → aim RIGHT → cp to right
+    const breakNorm  = Math.min(1.4, breakCmVal / 45);
+    const maxOff     = w * 0.36;
+    const cpOffsetX  = isFlat ? 0 : -Math.sign(currentGammaSigned) * maxOff * breakNorm;
+    const cpX = w * 0.5 + cpOffsetX;
+    const cpY = (sy + ey) * 0.50;
+
+    // ── Draw ground grid (subtle perspective lines)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+    ctx.lineWidth = 1;
+    for (let i = -3; i <= 3; i++) {
+      const gx = w * 0.5 + i * w * 0.12;
+      ctx.beginPath(); ctx.moveTo(gx, ey); ctx.lineTo(w*0.5 + i*w*0.4, sy); ctx.stroke();
+    }
+    ctx.restore();
+
+    // ── Break curve: 3-pass glow effect
+    const passes = [
+      { width: 28, alpha: 0.06, color: '255,255,255' },
+      { width: 12, alpha: 0.18, color: '255,255,255' },
+      { width:  3, alpha: 0.90, color: '255,255,255' },
+    ];
+    passes.forEach(p => {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(sx, sy);
+      ctx.quadraticCurveTo(cpX, cpY, ex, ey);
+      ctx.strokeStyle = `rgba(${p.color},${p.alpha})`;
+      ctx.lineWidth   = p.width;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      ctx.stroke();
+      ctx.restore();
+    });
+
+    // ── Aim direction indicator (short bright line from ball showing initial aim)
+    if (!isFlat && breakNorm > 0.05) {
+      const tx = (cpX - sx), ty = (cpY - sy);
+      const tl = Math.sqrt(tx*tx + ty*ty);
+      const aimLen = h * 0.10;
+      const ax = sx + (tx/tl)*aimLen, ay = sy + (ty/tl)*aimLen;
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ax, ay);
+      ctx.strokeStyle = 'rgba(212,175,55,0.85)';
+      ctx.lineWidth = 3; ctx.setLineDash([8,5]);
+      ctx.stroke(); ctx.setLineDash([]);
+      ctx.restore();
+    }
+
+    // ── Ball indicator (bottom)
+    ctx.save();
+    ctx.beginPath(); ctx.arc(sx, sy, 10, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.shadowColor = 'rgba(255,255,255,0.8)'; ctx.shadowBlur = 15;
+    ctx.fill(); ctx.restore();
+
+    // ── Cup indicator (top)
+    ctx.save();
+    ctx.beginPath(); ctx.arc(ex, ey, 14, 0, Math.PI*2);
+    ctx.strokeStyle = isFlat ? 'rgba(116,198,157,0.9)' : 'rgba(212,175,55,0.9)';
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 12;
+    ctx.stroke();
+    // Flag pole
+    ctx.beginPath();
+    ctx.moveTo(ex, ey - 14);
+    ctx.lineTo(ex, ey - 36);
+    ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+    ctx.lineWidth = 2; ctx.shadowBlur = 0;
+    ctx.stroke();
+    // Flag
+    ctx.beginPath();
+    ctx.moveTo(ex, ey - 36); ctx.lineTo(ex + 14, ey - 28); ctx.lineTo(ex, ey - 20);
+    ctx.fillStyle = isFlat ? 'rgba(116,198,157,0.9)' : 'rgba(212,175,55,0.9)';
+    ctx.fill();
+    ctx.restore();
+
+    // ── Break amount label along the curve
+    if (!isFlat && breakCmVal > 2) {
+      const lx = (sx + cpX + ex) / 3 + (cpOffsetX > 0 ? 18 : -18);
+      const ly = (sy + cpY) / 2;
+      ctx.save();
+      ctx.font = 'bold 18px "Bebas Neue", sans-serif';
+      ctx.textAlign = cpOffsetX >= 0 ? 'left' : 'right';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = 'rgba(212,175,55,0.9)';
+      ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 6;
+      ctx.fillText(breakCmVal.toFixed(0) + ' cm', lx, ly);
+      ctx.restore();
+    }
+  }
+  // ─────────────────────────────────────────────────────────────
+
+</script>
+
+<!-- AR Overlay -->
+<div class="ar-overlay" id="arOverlay" style="display:none">
+  <div class="ar-video-wrap">
+    <video id="arVideo" autoplay playsinline muted></video>
+    <canvas id="arCanvas"></canvas>
+    <div class="ar-hint">📍 カップ方向にiPhoneを向けて</div>
+    <button class="ar-close" id="arClose">✕</button>
+  </div>
+  <div class="ar-info-bar">
+    <div class="ar-info-left">
+      <div class="ar-info-label">推定ブレイク幅 / EST. BREAK</div>
+      <div class="ar-info-value"><span id="arBreakCm">—</span><span style="font-size:16px"> cm</span></div>
+    </div>
+    <div class="ar-info-right">
+      <div class="ar-info-type" id="arBreakType">—</div>
+      <div class="ar-info-sub" id="arBreakSub">傾斜を測定してください</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
