@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- © 2026 YUSUKE MORI. All rights reserved. -->
+<html lang="en" style="background:#0a0f0d;color:#d0d8d2">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How To Use | GREEN READER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f0d; --bg2: #111a15; --green: #2d6a4f;
+    --green-bright: #74c69d; --gold: #d4af37;
+    --text: #d0d8d2; --text-dim: #4a6255; --border: #1e3a28; --red: #e07878;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0a0f0d; color:#d0d8d2; font-family:'DM Mono',monospace; font-size:13px; line-height:1.8; min-height:100vh; }
+  header { width:100%; padding:14px 20px 10px; border-bottom:1px solid var(--border); background:#111a15; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:3px; color:var(--green-bright); }
+  .back-link { font-size:11px; letter-spacing:1px; color:var(--text-dim); text-decoration:none; border:1px solid var(--border); padding:5px 12px; border-radius:2px; }
+  main { max-width:680px; margin:0 auto; padding:40px 20px 80px; background:#0a0f0d; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:3px; color:var(--green-bright); margin-bottom:8px; }
+  .subtitle { font-size:11px; letter-spacing:1px; color:var(--text-dim); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:2px; color:var(--gold); margin:36px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  p { margin-bottom:12px; color:#d0d8d2; }
+  .step-card { background:#111a15; border:1px solid var(--border); border-radius:8px; padding:16px 18px; margin-bottom:12px; display:flex; gap:16px; align-items:flex-start; }
+  .step-num { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--green); line-height:1; flex-shrink:0; width:28px; }
+  .step-body h3 { font-family:'Bebas Neue',sans-serif; font-size:14px; letter-spacing:1.5px; color:var(--green-bright); margin-bottom:4px; }
+  .step-body p { margin:0; color:#d0d8d2; font-size:12px; }
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0; }
+  .info-card { background:#111a15; border:1px solid var(--border); border-radius:8px; padding:14px; }
+  .info-card .label { font-size:9px; letter-spacing:1.5px; color:var(--text-dim); margin-bottom:4px; }
+  .info-card .value { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:1px; color:var(--gold); }
+  .info-card p { margin:6px 0 0; font-size:11px; color:#d0d8d2; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:2px; font-size:10px; letter-spacing:1px; margin-right:4px; margin-bottom:4px; }
+  .tag-gold { background:rgba(212,175,55,0.15); color:var(--gold); border:1px solid rgba(212,175,55,0.3); }
+  .tag-red  { background:rgba(224,120,120,0.15); color:var(--red); border:1px solid rgba(224,120,120,0.3); }
+  .tip { background:rgba(45,106,79,0.1); border-left:3px solid var(--green); border-radius:0 6px 6px 0; padding:12px 16px; margin:16px 0; font-size:12px; }
+  .tip strong { color:var(--green-bright); }
+  .footer-card { background:#111a15; border:1px solid var(--border); border-radius:8px; padding:20px; margin:48px 0 0; text-align:center; }
+  .footer-card p { font-size:11px; color:var(--text-dim); margin:0; }
+  .cta { display:inline-block; margin-top:14px; background:var(--green); color:var(--bg); font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:2px; padding:10px 28px; border-radius:2px; text-decoration:none; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">GREEN READER</div>
+  <a href="green-reader.html" class="back-link">← Open App</a>
+</header>
+<main>
+  <h1>How To Use</h1>
+  <div class="subtitle">GREEN READER — GOLF GREEN SLOPE ANALYZER</div>
+
+  <p>GREEN READER uses your iPhone's motion sensor to measure golf green slope and estimate putt break. Perfect for practicing green reading on the practice green.</p>
+
+  <h2>Basic Usage</h2>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Enable Sensor</h3>
+      <p>Tap "Enable Sensor" on the splash screen and allow access to the motion sensor.</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Place iPhone on the Green</h3>
+      <p>Place your iPhone flat on the green facing toward the cup. Once the bubble stabilizes, slope measurement is complete.</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>Set Distance and Stimp</h3>
+      <p>Set the distance from ball to cup (paced off) and the stimp value for the green. Tap the field to open the drum-roll picker.</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>Read the Estimated Break</h3>
+      <p>Follow the "EST. BREAK" value and the "X cups aim right/left" instruction to line up your putt.</p>
+    </div>
+  </div>
+
+  <h2>Reading the Display</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">LEFT / RIGHT</div>
+      <div class="value">Lateral Slope</div>
+      <p>Right high → positive<br>Left high → negative</p>
+    </div>
+    <div class="info-card">
+      <div class="label">FRONT / BACK</div>
+      <div class="value">Vertical Slope</div>
+      <p>Uphill → positive<br>Downhill → negative</p>
+    </div>
+    <div class="info-card">
+      <div class="label">TOTAL</div>
+      <div class="value">Combined Slope</div>
+      <p>Combined angle of lateral and vertical slope</p>
+    </div>
+    <div class="info-card">
+      <div class="label">BREAK LINE</div>
+      <div class="value">Break Type</div>
+      <p>6 types: uphill/downhill × hook/slice/straight</p>
+    </div>
+  </div>
+
+  <h2>Break Types</h2>
+  <div style="margin:12px 0 20px">
+    <span class="tag tag-gold">UPHILL STRAIGHT</span>
+    <span class="tag tag-gold">UPHILL HOOK</span>
+    <span class="tag tag-gold">UPHILL SLICE</span>
+    <span class="tag tag-red">DOWNHILL STRAIGHT</span>
+    <span class="tag tag-red">DOWNHILL HOOK</span>
+    <span class="tag tag-red">DOWNHILL SLICE</span>
+  </div>
+  <p><strong style="color:var(--green-bright)">Hook</strong>: Right side high, left side low → ball breaks left → aim right</p>
+  <p><strong style="color:var(--green-bright)">Slice</strong>: Left side high, right side low → ball breaks right → aim left</p>
+
+  <h2>Just Touch / Firm +30cm</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Just Touch</div>
+      <div class="value">Dying at the Cup</div>
+      <p>Ball just reaches the cup. Maximum break effect from slope.</p>
+    </div>
+    <div class="info-card">
+      <div class="label">Firm +30cm</div>
+      <div class="value">30cm Past the Cup</div>
+      <p>Slightly firm pace. Less break compared to just touch.</p>
+    </div>
+  </div>
+
+  <h2>Wind Feature (WIND)</h2>
+  <p>Turn WIND ON to automatically fetch local wind direction and speed, and factor it into the break calculation.</p>
+  <div class="tip">
+    <strong>TIP:</strong> Point your iPhone toward the cup while using the app so the compass correctly calculates headwind, tailwind, and crosswind. The compass arrow shows the direction the wind is coming from.
+  </div>
+
+  <h2>What is Stimp?</h2>
+  <p>Stimp (Stimpmeter) measures green speed in feet. Higher values mean faster greens where the ball rolls farther.</p>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Slow Greens</div>
+      <div class="value">7〜9 ft</div>
+      <p>Municipal courses, practice greens</p>
+    </div>
+    <div class="info-card">
+      <div class="label">Average Greens</div>
+      <div class="value">10〜11 ft</div>
+      <p>Typical golf courses</p>
+    </div>
+    <div class="info-card">
+      <div class="label">Fast Greens</div>
+      <div class="value">12〜13 ft</div>
+      <p>Premium courses, competition</p>
+    </div>
+    <div class="info-card">
+      <div class="label">Ultra Fast</div>
+      <div class="value">14 ft+</div>
+      <p>Tournament specification</p>
+    </div>
+  </div>
+
+  <h2>Add to Home Screen</h2>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Open in Safari</h3>
+      <p>Must use Safari (Chrome does not support PWA on iOS).</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Tap Share Button</h3>
+      <p>Tap the Share button at the bottom of the screen.</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>Tap "Add to Home Screen"</h3>
+      <p>Select "Add to Home Screen" from the menu. The app will launch like a native app from your home screen.</p>
+    </div>
+  </div>
+
+  <div class="footer-card">
+    <p>GREEN READER is a free web app — no download required.</p>
+    <a href="green-reader.html" class="cta">Open App</a>
+  </div>
+</main>
+</body>
+</html>
