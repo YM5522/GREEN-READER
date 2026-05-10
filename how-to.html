@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja" style="background:#0a0f0d;color:#d0d8d2">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使い方 | GREEN READER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f0d;
+    --bg2: #111a15;
+    --green: #2d6a4f;
+    --green-bright: #74c69d;
+    --gold: #d4af37;
+    --text: #d0d8d2;
+    --text-dim: #4a6255;
+    --border: #1e3a28;
+    --red: #e07878;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0f0d;
+    color: #d0d8d2;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  header {
+    width: 100%;
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid var(--border);
+    background: #111a15;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--green-bright);
+  }
+  .back-link {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+  .back-link:hover { color: var(--green-bright); border-color: var(--green-bright); }
+
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    background: #0a0f0d;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--green-bright);
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin: 36px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  p { margin-bottom: 12px; color: #d0d8d2; }
+
+  .step-card {
+    background: #111a15;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--green);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 28px;
+  }
+  .step-body h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: var(--green-bright);
+    margin-bottom: 4px;
+  }
+  .step-body p { margin: 0; color: var(--text); font-size: 12px; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .info-card {
+    background: #111a15;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .info-card .label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .info-card .value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--gold);
+  }
+  .info-card p { margin: 6px 0 0; font-size: 11px; color: var(--text); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  .tag-gold { background: rgba(212,175,55,0.15); color: var(--gold); border: 1px solid rgba(212,175,55,0.3); }
+  .tag-red  { background: rgba(224,120,120,0.15); color: var(--red); border: 1px solid rgba(224,120,120,0.3); }
+  .tag-green { background: rgba(116,198,157,0.15); color: var(--green-bright); border: 1px solid rgba(116,198,157,0.3); }
+
+  .tip {
+    background: rgba(45,106,79,0.1);
+    border-left: 3px solid var(--green);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 12px;
+  }
+  .tip strong { color: var(--green-bright); }
+
+  .footer-card {
+    background: #111a15;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 48px 0 0;
+    text-align: center;
+  }
+  .footer-card p { font-size: 11px; color: var(--text-dim); margin: 0; }
+  .cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--green);
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 10px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">GREEN READER</div>
+  <a href="green-reader.html" class="back-link">← アプリを開く</a>
+</header>
+
+<main>
+  <h1>使い方</h1>
+
+  <p>GREEN READERは、iPhoneのモーションセンサーを使ってゴルフグリーンの傾斜を計測し、パットのブレイク量を推定するWebアプリです。練習グリーンでの傾斜読みトレーニングに最適です。</p>
+
+  <h2>基本的な使い方</h2>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>センサーを有効化する</h3>
+      <p>アプリを開いたらスプラッシュ画面の「センサーを有効化」ボタンをタップします。モーションセンサーへのアクセスを許可してください。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>iPhoneをグリーンに置く</h3>
+      <p>カップ方向に向けてiPhoneをグリーンの芝の上に平らに置きます。水平器の泡が安定したら傾斜の計測完了です。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>距離とスティンプを設定する</h3>
+      <p>ボールからカップまでの距離（歩測）と、そのグリーンのスティンプ値を設定します。タップするとドラムロール式の選択画面が表示されます。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>推定ブレイク幅を確認する</h3>
+      <p>「推定ブレイク幅」に表示されたcm数と、「カップ○個分 右/左を狙う」の指示に従ってパットを打ちます。</p>
+    </div>
+  </div>
+
+  <h2>画面の見方</h2>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">LEFT / RIGHT</div>
+      <div class="value">横傾斜</div>
+      <p>右が高い → プラス表示<br>左が高い → マイナス表示</p>
+    </div>
+    <div class="info-card">
+      <div class="label">FRONT / BACK</div>
+      <div class="value">縦傾斜</div>
+      <p>上り → プラス表示<br>下り → マイナス表示</p>
+    </div>
+    <div class="info-card">
+      <div class="label">TOTAL</div>
+      <div class="value">総傾斜</div>
+      <p>横・縦の合成傾斜角度</p>
+    </div>
+    <div class="info-card">
+      <div class="label">BREAK LINE</div>
+      <div class="value">ブレイク種別</div>
+      <p>上り/下り × フック/スライス/ストレートの6種類</p>
+    </div>
+  </div>
+
+  <h2>ブレイク種別について</h2>
+
+  <p>ブレイクラインは以下の6種類で表示されます：</p>
+
+  <div style="margin: 12px 0 20px">
+    <span class="tag tag-gold">上りストレート</span>
+    <span class="tag tag-gold">上りフック</span>
+    <span class="tag tag-gold">上りスライス</span>
+    <span class="tag tag-red">下りストレート</span>
+    <span class="tag tag-red">下りフック</span>
+    <span class="tag tag-red">下りスライス</span>
+  </div>
+
+  <p><strong style="color:var(--green-bright)">フック</strong>：右が高い・左が低い → ボールが左に曲がる → 右を狙って打つ</p>
+  <p><strong style="color:var(--green-bright)">スライス</strong>：左が高い・右が低い → ボールが右に曲がる → 左を狙って打つ</p>
+
+  <h2>ジャストタッチ / 強め +30cm</h2>
+
+  <p>パットの打ち出し強さによってブレイク量が変わります。</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">ジャストタッチ</div>
+      <div class="value">カップに届く強さ</div>
+      <p>ちょうどカップに届いて落ちる強さ。傾斜の影響を最大限に受けます。</p>
+    </div>
+    <div class="info-card">
+      <div class="label">強め +30cm</div>
+      <div class="value">カップ奥30cm通過</div>
+      <p>少し強めに打つ場合。ブレイク量が少なくなります。</p>
+    </div>
+  </div>
+
+  <h2>風機能（WIND）</h2>
+
+  <p>WINDをONにすると現在地の風向き・風速を自動取得し、パットへの風の影響をブレイク計算に反映します。</p>
+
+  <div class="tip">
+    <strong>TIPS：</strong>iPhoneをカップ方向に向けた状態で使うと、追い風・向かい風・横風が正確に計算されます。コンパスの矢印が風の吹いてくる方向を示しています。
+  </div>
+
+  <h2>スティンプとは？</h2>
+
+  <p>スティンプとはグリーンの速さを示す指標（単位：フィート）です。数値が大きいほどグリーンが速く、ボールが転がりやすくなります。</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">遅いグリーン</div>
+      <div class="value">7〜9 ft</div>
+      <p>公営コース・練習グリーンなど</p>
+    </div>
+    <div class="info-card">
+      <div class="label">標準的なグリーン</div>
+      <div class="value">10〜11 ft</div>
+      <p>一般的なゴルフ場</p>
+    </div>
+    <div class="info-card">
+      <div class="label">速いグリーン</div>
+      <div class="value">12〜13 ft</div>
+      <p>上級コース・競技用</p>
+    </div>
+    <div class="info-card">
+      <div class="label">超高速グリーン</div>
+      <div class="value">14 ft〜</div>
+      <p>トーナメント仕様</p>
+    </div>
+  </div>
+
+  <h2>ホーム画面への追加方法</h2>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Safariで開く</h3>
+      <p>必ずSafariでアプリを開いてください（ChromeなどはPWAに対応していません）。</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>共有ボタンをタップ</h3>
+      <p>画面下部の共有ボタンをタップします。</p>
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>「ホーム画面に追加」を選択</h3>
+      <p>メニューから「ホーム画面に追加」をタップして完了です。以降はアプリのように起動できます。</p>
+    </div>
+  </div>
+
+  <div class="footer-card">
+    <p>GREEN READERはブラウザから無料で使えるWebアプリです。</p>
+    <a href="green-reader.html" class="cta">アプリを開く</a>
+  </div>
+</main>
+</body>
+</html>
