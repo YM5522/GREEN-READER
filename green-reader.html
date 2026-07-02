@@ -1,0 +1,43 @@
+<!-- © 2026 YUSUKE MORI. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="ja" style="background:#0a0f0d">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GREEN READER</title>
+<meta http-equiv="refresh" content="5;url=https://green-reader.netlify.app">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0a0f0d; color:#d0d8d2;
+    font-family:'DM Mono',monospace;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+  }
+  .wrap { text-align:center; padding:40px 24px; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:4px; color:#74c69d; margin-bottom:24px; }
+  p { font-size:13px; color:#4a6255; line-height:1.8; margin-bottom:8px; }
+  .link { display:inline-block; margin-top:24px; background:#2d6a4f; color:#0a0f0d; font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; padding:14px 32px; border-radius:4px; text-decoration:none; }
+  .count { color:#d4af37; font-size:11px; margin-top:16px; letter-spacing:1px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">GREEN READER</div>
+  <p>GREEN READERは新しいURLに移動しました。</p>
+  <p>GREEN READER has moved to a new URL.</p>
+  <a href="https://green-reader.netlify.app" class="link">新しいページへ →</a>
+  <div class="count" id="count">5秒後に自動転送されます</div>
+</div>
+<script>
+  let n = 5;
+  const el = document.getElementById('count');
+  const t = setInterval(() => {
+    n--;
+    if (n <= 0) { clearInterval(t); return; }
+    el.textContent = n + '秒後に自動転送されます';
+  }, 1000);
+</script>
+</body>
+</html>
